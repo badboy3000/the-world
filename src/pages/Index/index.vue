@@ -1,26 +1,34 @@
 <template>
-  <div class="demo-page">
-    <h3 class="title"><span>欢迎打开{{title}}</span></h3>
-    <button class="btn" @click="routeDetail">跳转到TodoMVC</button>
+  <div id="homepage">
+    <v-header></v-header>
+    <div class="demo-page">
+      <h3 class="title"><span>欢迎打开{{title}}</span></h3>
+      <button class="btn" @click="routeDetail">跳转到TodoMVC</button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: '示例页面',
-    };
-  },
-  methods: {
-    routeDetail() {
-      this.$router.push({
-        path: '/TodoMVC',
-        query: { userInfo: { name: 'John', id: 100 }, flag: true, flag2: 'true' },
-      });
+  import vHeader from '../../components/layouts/Header'
+
+  export default {
+    data() {
+      return {
+        title: '示例页面',
+      };
     },
-  },
-};
+    components: {
+      vHeader
+    },
+    methods: {
+      routeDetail() {
+        this.$router.push({
+          path: '/TodoMVC',
+          query: { userInfo: { name: 'John', id: 100 }, flag: true, flag2: 'true' },
+        });
+      },
+    },
+  };
 </script>
 
 <style>
